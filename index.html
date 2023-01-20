@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue Beginner</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+</head>
+<style>
+  body {
+    margin: 5%;
+    font-family: 'Sofia', sans-serif;
+  }
+  .active {
+    background: salmon;
+    border: 0;
+    padding: 5px;
+  }
+</style>
+<body>
+
+<div id="app">
+  <header>
+    <img src="images/Vue.png" width="80">
+    <h1 v-text="bilangan"></h1>
+    <p>bilangan ini adalah bilangan {{ infoBilangan }}</p>
+    <p>
+      <button @click="handleClick()">Ditekan</button>
+    </p>
+    <img :src="gambar" width="500">
+    <p>The Progressive Javascript Framework</p>
+
+    <button v-bind:class="{active: menu === 'Home' }" @click="menu = 'Home'">Home</button>
+    <button v-bind:class="{active: menu === 'About'}" @click="menu = 'About'">About</button>
+    <button v-bind:class="{active: menu === 'Blog'}" @click="menu = 'Blog'">Blog</button>
+  </header>
+  
+  <footer id="footer"> 
+    <p>copyright 2019</p>
+  </footer>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+<script>
+  const vm = new Vue({
+    el: '#app',
+    data: {
+      name: 'Gunawan',
+      judul: 'What is Vue.js',
+      message: "Hello Word",
+      qty: 3,
+      namaDepan: 'eka',
+      namaBelakang: ' okey',
+      bilangan: 1,
+      gambar: 'images/imagesVue.png',
+      menu: 'Home'
+    },
+    methods: {
+      getname: function() {
+        return 'Hello, ' + this.name
+      },
+      ubahNama: function (namaBaru) {
+        this.name = namaBaru
+        return this.getname()
+      },
+      handleClick: function () {
+        this.bilangan++
+        this.gambar = 'images/React.png'
+      }
+    },
+    computed: {
+      totalBayar: function() {
+        return this.qty * 10000
+      },
+      namaLengkap: function() {
+        return this.namaDepan + this.namaBelakang
+      },
+      infoBilangan: function() {
+        return this.bilangan%2 === 0 ? 'Genap' : 'Ganjil'
+      }
+    }
+  })
+</script>
+  
+</body>
+</html>
