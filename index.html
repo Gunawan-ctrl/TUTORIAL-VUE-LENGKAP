@@ -23,7 +23,23 @@
 <div id="app">
   <header>
     <img src="images/Vue.png" width="80">
-    <h1 v-text="bilangan"></h1>
+    <h1 v-text="name"></h1>
+
+    <!-- Belajar v-model -->
+    <p><input type="text" v-model="name"></p>
+
+    <ul>
+      <li v-for="k in kelas">{{ k }}</li> <!-- Direktive perulangan v-for -->
+    </ul>
+
+    <P>{{ kelas }}</P>
+    <div>
+      <label><input type="checkbox" value="React" v-model="kelas"> React</label>
+      <label><input type="checkbox" value="Vue.js" v-model="kelas"> Vue.js</label>
+      <label><input type="checkbox" value="Angular" v-model="kelas"> Angular</label>
+    </div> <!-- End belajar v-model -->
+
+
     <p>bilangan ini adalah bilangan {{ infoBilangan }}</p>
     <p>
       <button @click="handleClick()">Ditekan</button>
@@ -55,7 +71,8 @@
       namaBelakang: ' okey',
       bilangan: 1,
       gambar: 'images/imagesVue.png',
-      menu: 'Home'
+      menu: 'Home',
+      kelas: ['golang', 'python', 'php']
     },
     methods: {
       getname: function() {
